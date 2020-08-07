@@ -1,0 +1,5 @@
+- id: prevent-submodule-regression
+  name: Prevent Submodule Regressions
+  description: Prevents accidental submodule regressions
+  entry: prevent-submodule-regression
+  language: python
