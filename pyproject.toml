@@ -1,8 +1,18 @@
 [tool.poetry]
 name = "prevent-submodule-regression"
 version = "0.1.0"
-description = ""
+description = "Pre-commit hook to prevent accidental submodule regressions"
 authors = ["Erik Ogan <erik@ogan.net>"]
+maintainers = ["Erik Ogan <erik@ogan.net>"]
+license = "Mozilla Public License 2.0"
+readme = "README.md"
+homepage = "https://github.com/erikogan/prevent-submodule-regression"
+repository = "https://github.com/erikogan/prevent-submodule-regression"
+keywords = [
+  "precommit",
+  "pre-commit",
+  "submodule",
+  "regression"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
