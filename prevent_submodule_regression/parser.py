@@ -1,11 +1,17 @@
 import os
 import re
 import subprocess
-import warnings
+import sys
+
+import colorama
+from colorama import Back
+from colorama import Fore
+from colorama import Style
 
 
 class Parser:
     def run(self, args):
+
         self.chdir_root()
 
         if not args:
@@ -21,14 +27,19 @@ class Parser:
         current_sha = self.submodule_sha(path)
 
         if not current_sha:
-            warnings.warn(f"{path} is not a submodule, skipping.")
+            print(
+                f"{Fore.BLACK}{Style.BRIGHT}{Back.YELLOW}[WARNING]{Style.RESET_ALL} {path} is not a submodule",
+                file=sys.stderr,
+            )
             return
 
         shas = self.past_submodule_shas(path)
 
         if current_sha in shas:
             exit(
-                f"ERROR: sha {current_sha} was already committed. This appears to be a regression."
+                f"{Fore.WHITE}{Style.BRIGHT}{Back.RED}[ERROR]{Style.RESET_ALL}"
+                f" {path} SHA {current_sha} was already committed."
+                " This appears to be a regression."
             )
         exit(0)
 
@@ -60,7 +71,11 @@ class Parser:
 
             res = pat.search(data)
             if not res:
-                warnings.warn(f"{path} found in sha {commit}!")
+                print(
+                    f"{Fore.BLACK}{Style.BRIGHT}{Back.YELLOW}[WARNING]{Style.RESET_ALL}"
+                    f" {path} not found in SHA {commit}!",
+                    file=sys.stderr,
+                )
 
                 return res
             return res[1]
@@ -96,3 +111,7 @@ class Parser:
             ["git", "rev-parse", "--show-toplevel"], capture_output=True, check=True
         )
         os.chdir(result.stdout.decode("utf-8").strip())
+
+    def __init__(self):
+        # Safety
+        colorama.init(autoreset=True)
