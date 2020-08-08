@@ -3,3 +3,4 @@
   description: Prevents accidental submodule regressions
   entry: prevent-submodule-regression
   language: python
+  types: [directory]
