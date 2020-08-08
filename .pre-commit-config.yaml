@@ -1,0 +1,72 @@
+default_stages:
+  - commit
+  - merge-commit
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.5.0
+    hooks:
+    - id: trailing-whitespace
+      # The ConfigParser write function writes files that violate this linter
+      exclude: setup.cfg
+    - id: end-of-file-fixer
+    - id: check-yaml
+    - id: debug-statements
+    - id: check-added-large-files
+    - id: check-case-conflict
+    - id: check-merge-conflict
+    - id: check-symlinks
+    - id: name-tests-test
+      args:
+        - --django
+    # - id: requirements-txt-fixer
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.3.0
+    hooks:
+    - id: pyupgrade
+      args:
+        - --py36-plus
+  #### reorder_python_imports does a better job being compatible with black AND reducing merge-conflicts
+  # - repo: https://github.com/asottile/seed-isort-config
+  #   rev: v2.1.1
+  #   hooks:
+  #   - id: seed-isort-config
+  # - repo: https://github.com/timothycrosley/isort
+  #   rev: 4.3.21-2
+  #   hooks:
+  #   - id: isort
+  - repo: https://github.com/asottile/reorder_python_imports
+    rev: v2.2.0
+    hooks:
+    - id: reorder-python-imports
+  - repo: https://github.com/ambv/black
+    rev: stable
+    hooks:
+    - id: black
+      language_version: python3.7
+  # This flake8 ignores the configuration file and --append-config is also not honored
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.8.1
+    hooks:
+    - id: flake8
+      args:
+      - --append-config=.flake8
+      - --ignore=E501
+  - repo: https://github.com/erikogan/reinstate-revert-revert
+    rev: v1.0.3
+    hooks:
+      - id: reinstate-revert-revert
+        stages:
+          - prepare-commit-msg
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.1.7
+    hooks:
+    - id: remove-crlf
+      exclude_types:
+        - diff
+        - pem
+    - id: remove-tabs
+      # This should ALWAYS be the defaut!
+      args: [ '--whitespaces-count', '8' ]
+      exclude_types:
+        - diff
+      exclude: "\\.gitmodules"
