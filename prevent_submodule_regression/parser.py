@@ -38,8 +38,8 @@ class Parser:
         if current_sha in shas:
             exit(
                 f"{Fore.WHITE}{Style.BRIGHT}{Back.RED}[ERROR]{Style.RESET_ALL}"
-                f" {path} SHA {current_sha} was already committed."
-                " This appears to be a regression."
+                f" {Fore.CYAN}{path}{Style.RESET_ALL} SHA {Fore.YELLOW}{current_sha}{Style.RESET_ALL}"
+                " was already committed. This appears to be a regression."
             )
         exit(0)
 
