@@ -33,6 +33,11 @@ repos:
         types: [directory]
 ```
 
+Example failure output:
+
+![submodule_example](https://user-images.githubusercontent.com/60583/89809067-ec04d500-daef-11ea-9d43-7e990ea21234.png)
+
+
 ### As a standalone script
 
 ```
@@ -50,7 +55,10 @@ version of the script will have an argument to override that behavior.
 In no particular order:
 
 * Actual tests
-* A way to override the error and allow you to commit a regression.
+* Ways to override the error and allow you to commit a regression.
+  * Command-line
+  * Environment variables
+* Ways to override (or disable) colorization codes
   * Command-line
   * Environment variables
 * Usage information via `--help`
