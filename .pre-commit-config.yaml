@@ -69,4 +69,4 @@ repos:
       args: [ '--whitespaces-count', '8' ]
       exclude_types:
         - diff
-      exclude: "\\.gitmodules"
+      exclude: "(\\.gitmodules|setup.cfg)"
