@@ -35,7 +35,7 @@ repos:
 
 Example failure output:
 
-![submodule_example](https://user-images.githubusercontent.com/60583/89809067-ec04d500-daef-11ea-9d43-7e990ea21234.png)
+![submodule example with colorized output](https://user-images.githubusercontent.com/60583/89809067-ec04d500-daef-11ea-9d43-7e990ea21234.png)
 
 
 ### As a standalone script
