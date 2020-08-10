@@ -104,9 +104,6 @@ class Parser:
         return not not result.stdout.decode("utf-8").strip()
 
     def chdir_root(self):
-        # TODO: REMOVE
-        os.chdir("../data-river")
-        return
         result = subprocess.run(
             ["git", "rev-parse", "--show-toplevel"], capture_output=True, check=True
         )
