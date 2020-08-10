@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "prevent-submodule-regression"
-version = "0.1.1"
+version = "0.1.2"
 description = "Pre-commit hook to prevent accidental submodule regressions"
 authors = ["Erik Ogan <erik@ogan.net>"]
 maintainers = ["Erik Ogan <erik@ogan.net>"]
