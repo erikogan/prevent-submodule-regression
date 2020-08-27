@@ -26,10 +26,10 @@ repos:
     rev: v0.1.2
     hooks:
       - id: prevent-submodule-regression
-        # By default hooks only operat on plain files, which do not include
+        # By default hooks only operate on plain files, which do not include
         # submodules. This setting has been added to the hook configuration,
-        # but it is not consistently honored. The safest approach is to be
-        # explicit in your configuration.
+        # and should only be necessary if you are running a version older than
+        # 0.1.2. Keeping it here for posterity, it can safely be skipped.
         types: [directory]
 ```
 
