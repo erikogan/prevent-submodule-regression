@@ -20,6 +20,8 @@ class Parser:
         for path in args:
             self.process(path)
 
+        exit(0)
+
     def process(self, path):
         if not self.is_staged(path):
             return
@@ -41,7 +43,6 @@ class Parser:
                 f" {Fore.CYAN}{path}{Style.RESET_ALL} SHA {Fore.YELLOW}{current_sha}{Style.RESET_ALL}"
                 " was already committed. This appears to be a regression."
             )
-        exit(0)
 
     def submodule_sha(self, path):
         result = subprocess.run(
@@ -80,7 +81,7 @@ class Parser:
                 return res
             return res[1]
 
-        return [extract_sha(c, path) for c in commits]
+        return [extract_sha(c, path) for c in commits if commits != [""]]
 
     def list_of_submodules(self):
         # Rely on the fact that the .gitmodules file is in git config format

@@ -23,7 +23,7 @@ A sample configuration:
 repos:
   # […]
   - repo: https://github.com/erikogan/prevent-submodule-regression
-    rev: v0.1.2
+    rev: v0.1.3
     hooks:
       - id: prevent-submodule-regression
         # By default hooks only operate on plain files, which do not include
